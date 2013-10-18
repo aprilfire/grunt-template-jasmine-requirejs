@@ -142,6 +142,18 @@ module.exports = function(grunt) {
           specs: 'test/fixtures/require-nobaseurl/spec/**/*Spec.js',
           template: require('./')
         }
+      },
+      'require-polyfills': {
+        src: 'test/fixtures/require-polyfills/src/**/*.js',
+        options: {
+          specs: 'test/fixtures/require-polyfills/spec/**/*Spec.js',
+          template: require('./'),
+          templateOptions: {
+            requireConfig: {
+              baseUrl: 'test/fixtures/require-polyfills/src/'
+            }
+          }
+        }
       }
     }
   });
@@ -151,7 +163,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
-  grunt.registerTask('test', ['connect', 'jasmine:requirejs', 'jasmine:version_path_test', 'jasmine:require-baseurl', 'jasmine:require-nobaseurl']);
+  grunt.registerTask('test', ['connect', 'jasmine:requirejs', 'jasmine:version_path_test', 'jasmine:require-baseurl', 'jasmine:require-nobaseurl', 'jasmine:require-polyfills']);
   grunt.registerTask('parse_test', ['connect', 'jasmine:parse_test']);
 
   // Default task.
