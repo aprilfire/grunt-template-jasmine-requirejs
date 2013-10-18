@@ -23,7 +23,7 @@
   </script>
 
   <% with (scripts) { %>
-  <% [].concat(jasmine, vendor, helpers).forEach(function(script){ %>
+  <% [].concat(polyfills, jasmine, vendor, helpers).forEach(function(script){ %>
   <script src="<%= script %>"></script>
   <% }) %>
   <% }; %>
